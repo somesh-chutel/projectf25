@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 import "./index.css";
@@ -6,6 +6,8 @@ import "./index.css";
 const Login = () => {
 
   const navigate = useNavigate();
+
+  const token = Cookies.get("jwtToken");
 
     const [allValues,setValues] = useState({
         username : "",
@@ -62,6 +64,15 @@ const Login = () => {
         setValues({...allValues,password : e.target.value});
     }
 
+    useEffect( ()=>{
+
+        if( token !== undefined){
+
+            navigate("/");
+
+        }
+
+    },[])
 
   return (
     <div className="login-cont">
