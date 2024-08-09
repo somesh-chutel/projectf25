@@ -1,0 +1,17 @@
+.jobs-list-cont{
+    width: 100%;
+    background-color: rgb(51, 49, 49);
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    list-style: none;
+    color: whitesmoke;
+}
+.title-logo-cont{
+    display: flex;
+    align-items: center;
+}
+.web-logo{
+    width: 70px;
+    margin-right: 20px;
+}

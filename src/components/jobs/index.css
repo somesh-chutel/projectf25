@@ -1,0 +1,16 @@
+.jobs-main-cont{
+    width: 100%;
+    background-color: black;
+    display: flex;
+}
+.filter-section{
+    width: 30%;
+    height: 100%;
+    border: 1px solid red;
+}
+.all-jobs-card-cont{
+    width: 70%;
+    height: 100%;
+    border: 1px solid white;
+    padding: 20px;
+}
