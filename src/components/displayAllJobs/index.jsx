@@ -1,41 +1,46 @@
 import { FaStar } from "react-icons/fa";
-import './index.css';
+import { FaLocationDot, FaBriefcase } from "react-icons/fa6";
+import "./index.css";
 
+const DisplayAllJobs = (props) => {
+  const { jobsData } = props;
 
-/*
+  return (
+      <li className="jobs-card rounded">
+        <div className="web-logo-rating-cont">
+          <img
+            className="jobs-web-logo"
+            src={jobsData.company_logo_url}
+            alt=""
+          />
 
-"id": "bb95e51b-b1b2-4d97-bee4-1d5ec2b96751",
-"title": "Devops Engineer",
-"rating": 4,
-"company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.png",
-"location": "Delhi",
-"job_description": "We are looking for a DevOps Engineer with a minimum of 5 years of industry experience, preferably working in the financial IT community. The position in the team is focused on delivering exceptional services to both BU and Dev partners to minimize/avoid any production outages. The role will focus on production support.",
-"employment_type": "Internship",
-"package_per_annum": "10 LPA"
+          <div className="rating-cont">
+            <h3>{jobsData.title}</h3>
+            <FaStar className="rating-icon" />
+            <span>{jobsData.rating}</span>
+          </div>
+        </div>
 
-*/
+        <div className="location-ppa-cont">
+          <div className="location-empt-cont">
+            <FaLocationDot className="mr-1" />
+            <span className="mr-3">{jobsData.location}</span>
+            <FaBriefcase className="mr-1" />
+            <span>{jobsData.employment_type}</span>
+          </div>
 
-const DisplayAllJobs = (props)=>{
+          <h5>{jobsData.package_per_annum}</h5>
+        </div>
 
-    const {jobsItem} = props;
+        <hr />
 
+        <div>
+          <h5>Description</h5>
 
-    return (
-        <li className='jobs-list-cont'>
-            <div className='title-logo-cont'>
-                <img className='web-logo' src={jobsItem.company_logo_url} alt="" />
-                <div>
-                    <h3>{jobsItem.title}</h3>
-                    <FaStar className="mr-2 text-warning"/>
-                    <span>{jobsItem.rating}</span>
-                </div>
-            </div>
-
-        </li>
-    )
-}
-
-
-
+          <p>{jobsData.job_description}</p>
+        </div>
+      </li>
+  );
+};
 
 export default DisplayAllJobs;

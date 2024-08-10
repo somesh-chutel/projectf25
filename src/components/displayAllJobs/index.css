@@ -1,17 +1,33 @@
-.jobs-list-cont{
-    width: 100%;
-    background-color: rgb(51, 49, 49);
-    padding: 15px;
-    border-radius: 15px;
-    margin-bottom: 15px;
+.jobs-card{
     list-style: none;
-    color: whitesmoke;
+    background-color: rgb(92, 85, 85);
+    padding: 15px;
+    margin-bottom: 10px;
+    color: white;
 }
-.title-logo-cont{
+.web-logo-rating-cont{
     display: flex;
+    margin-bottom: 15px;
+
+}
+.rating-cont{
+    margin-left: 15px;
+}
+.jobs-web-logo{
+    width: 70px;
+}
+.rating-icon{
+    color: gold;
+    margin-right: 10px;
+}
+.location-ppa-cont{
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
-.web-logo{
-    width: 70px;
-    margin-right: 20px;
+.my-link{
+    text-decoration: none;
+}
+.all-jobs-cont:hover{
+    text-decoration: none;
 }
