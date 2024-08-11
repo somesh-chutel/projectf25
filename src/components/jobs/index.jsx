@@ -8,14 +8,18 @@ import Cookies from "js-cookie";
 const Jobs = () => {
   const [allValues, setValues] = useState({
     jobsList: [],
-    userInput :""
+    userInput :"",
+    minPakage:"",
+    empTypeList : []
   });
 
   const token = Cookies.get("jwtToken");
 
   useEffect(() => {
     const fetchAllJobsData = async () => {
-      const api = `https://apis.ccbp.in/jobs?employment_type=&minimum_package=&search=`;
+
+      
+      const api = `https://apis.ccbp.in/jobs?employment_type=${allValues.empTypeList}&minimum_package=${allValues.minPakage}&search=${allValues.userInput}`;
 
       const options = {
         method: "GET",
@@ -27,17 +31,41 @@ const Jobs = () => {
       const response = await fetch(api, options);
       const data = await response.json();
 
+      console.log(data.jobs);
+
       if (response.ok === true) {
         setValues({ ...allValues, jobsList: data.jobs });
       }
     };
 
     fetchAllJobsData();
-  }, []);
+  }, [allValues.userInput,allValues.empTypeList]);
 
 
   const onChangeUserSearch = (e)=>{
-    setValues({...allValues, userInput : e.target.value})
+    
+    if(e.key === "Enter"){
+
+      setValues({...allValues, userInput : e.target.value});
+
+    }
+
+    
+  }
+
+  const onCHangeEmpTypeList = (value,isChecked)=>{
+
+    if( isChecked === true){
+
+      setValues({...allValues, empTypeList : [...allValues.empTypeList,value]});
+
+    }
+    else{
+
+      setValues({...allValues, empTypeList : allValues.empTypeList.filter( each=> each !== value)});
+
+    }
+
   }
 
   return (
@@ -46,11 +74,11 @@ const Jobs = () => {
 
       <div className="jobs-main-cont">
         <div className="filter-section">
-          <FilterSection />
+          <FilterSection empTypeFunction = {onCHangeEmpTypeList}/>
         </div>
 
         <div className="all-jobs-card-cont">
-            <input onChange={onChangeUserSearch} type="search" className="form-control w-50 mb-3 ml-5"/>
+            <input onKeyUp={onChangeUserSearch} type="search" className="form-control w-50 mb-3 ml-5"/>
           <ul>
             {allValues.jobsList.map((each) => (
               <DisplayAllJobs key={each.id} jobsData={each} />

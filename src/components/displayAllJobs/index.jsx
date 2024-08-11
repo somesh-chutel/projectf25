@@ -1,11 +1,13 @@
 import { FaStar } from "react-icons/fa";
 import { FaLocationDot, FaBriefcase } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 import "./index.css";
 
 const DisplayAllJobs = (props) => {
   const { jobsData } = props;
 
   return (
+    <Link to={`/jobs/${jobsData.id}`}>
       <li className="jobs-card rounded">
         <div className="web-logo-rating-cont">
           <img
@@ -40,6 +42,7 @@ const DisplayAllJobs = (props) => {
           <p>{jobsData.job_description}</p>
         </div>
       </li>
+      </Link>
   );
 };
 
